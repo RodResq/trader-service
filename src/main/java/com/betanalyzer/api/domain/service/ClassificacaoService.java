@@ -3,13 +3,12 @@ package com.betanalyzer.api.domain.service;
 import com.betanalyzer.api.domain.exception.NegocioException;
 import com.betanalyzer.api.domain.model.Campeonato;
 import com.betanalyzer.api.domain.model.Classificacao;
-import com.betanalyzer.api.domain.repository.CampeonatoRepository;
 import com.betanalyzer.api.domain.repository.ClassificacaoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @AllArgsConstructor
 @Service
@@ -27,7 +26,7 @@ public class ClassificacaoService {
         Campeonato campeonato = cadastroCampeonatoService.buscar(classificacao.getCampeonato().getIdCampeonato());
 
         classificacao.setCampeonato(campeonato);
-        classificacao.setData(LocalDateTime.now());
+        classificacao.setData(OffsetDateTime.now());
 
         return classificacaoRepository.save(classificacao);
     }
