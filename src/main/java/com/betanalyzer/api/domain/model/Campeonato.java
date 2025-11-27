@@ -22,11 +22,16 @@ public class Campeonato {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private Long idCampeonato;
+    private Long id;
 
     @NotBlank
     @Size(max = 60)
     private String nome;
+
+    private String pais;
+
+    private String pais_translate;
+
     private Boolean ativo;
 
 }

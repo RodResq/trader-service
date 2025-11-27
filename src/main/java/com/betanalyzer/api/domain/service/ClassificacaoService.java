@@ -23,7 +23,7 @@ public class ClassificacaoService {
             throw new NegocioException("Classificacao ja existe!");
         }
 
-        Campeonato campeonato = cadastroCampeonatoService.buscar(classificacao.getCampeonato().getIdCampeonato());
+        Campeonato campeonato = cadastroCampeonatoService.buscar(classificacao.getCampeonato().getId());
 
         classificacao.setCampeonato(campeonato);
         classificacao.setData(OffsetDateTime.now());

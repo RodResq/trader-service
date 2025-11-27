@@ -33,7 +33,7 @@ public class CampeonatoController {
         return  repository.findById(idCampeonato)
                 .map(campeonato -> {
                     var campeonatoModel = new CampeonatoModel();
-                    campeonatoModel.setId(campeonato.getIdCampeonato());
+                    campeonatoModel.setId(campeonato.getId());
                     campeonatoModel.setNomeCampeonato(campeonato.getNome());
 
                     return ResponseEntity.ok().body(campeonatoModel);
@@ -53,7 +53,7 @@ public class CampeonatoController {
             return ResponseEntity.notFound().build();
         }
 
-        campeonato.setIdCampeonato(idCampeonato);
+        campeonato.setId(idCampeonato);
         cadastroCampeonatoService.salvar(campeonato);
         return ResponseEntity.ok().build();
     }
