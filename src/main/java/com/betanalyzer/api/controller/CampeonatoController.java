@@ -8,11 +8,12 @@ import com.betanalyzer.api.model.CampeonatoModel;
 import com.betanalyzer.api.model.input.CampeonatoInput;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -24,8 +25,8 @@ public class CampeonatoController {
     private final CampeonatoAssembler campeonatoAssembler;
 
     @GetMapping
-    public List<Campeonato> listar() {
-        return repository.findAll();
+    public Page<Campeonato> listar(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     @GetMapping("/{idCampeonato}")
